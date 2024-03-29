@@ -33,7 +33,6 @@ const ContactForm = () => {
       name: values.name,
       number: values.number,
     };
-    console.log(userInfo);
 
     dispatch(addContact(userInfo));
 
