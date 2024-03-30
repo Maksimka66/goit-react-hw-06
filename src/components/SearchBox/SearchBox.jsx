@@ -6,7 +6,8 @@ const SearchBox = () => {
   const dispatch = useDispatch();
 
   const valueFilter = (e) => {
-    dispatch(changeFilter(e.target.value.trim()));
+    const value = e.target.value.toLowerCase();
+    dispatch(changeFilter(value.trim()));
   };
 
   return (

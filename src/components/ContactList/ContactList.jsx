@@ -7,20 +7,18 @@ import { selectNameFilter } from "../../redux/filtersSlice";
 
 const ContactList = () => {
   const contactsList = useSelector(selectContacts);
-  const filteredList = useSelector(selectNameFilter);
+  const nameFilter = useSelector(selectNameFilter);
+  const filteredList = contactsList.filter((user) =>
+    user.name.toLowerCase().includes(nameFilter.toLowerCase().trim())
+  );
 
   return (
     <ul className={styles.listContacts}>
-      {contactsList.map(
-        (user) => (
-          console.log(user),
-          (
-            <li key={user.id} className={styles.listItem}>
-              <Contact user={user} />
-            </li>
-          )
-        )
-      )}
+      {filteredList.map((user) => (
+        <li key={user.id} className={styles.listItem}>
+          <Contact user={user} />
+        </li>
+      ))}
     </ul>
   );
 };
